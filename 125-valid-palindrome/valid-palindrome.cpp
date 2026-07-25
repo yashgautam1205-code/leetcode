@@ -6,18 +6,23 @@ public:
         
         while (left < right) 
         {
-            while (left < right && !isalnum(s[left])) 
-            left++;
-            while (left < right && !isalnum(s[right])) 
-            right--;
-            
-            if (tolower(s[left]) != tolower(s[right])) 
+            if (!isalnum(s[left]))
             {
-                return false;
+                left++;
             }
-            
-            left++;
-            right--;
+            else if (!isalnum(s[right]))
+            {
+                right--;
+            }
+            else
+            {
+                if (tolower(s[left]) != tolower(s[right]))
+                {
+                    return false;
+                }
+                left++;
+                right--;
+            }
         }
         return true;
     }
