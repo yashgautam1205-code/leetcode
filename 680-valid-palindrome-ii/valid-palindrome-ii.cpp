@@ -30,6 +30,6 @@ public:
                 return check(s,start+1,end) || check(s,start,end-1);
             }
         }
-        return -1;
+        return true;
     }
 };
