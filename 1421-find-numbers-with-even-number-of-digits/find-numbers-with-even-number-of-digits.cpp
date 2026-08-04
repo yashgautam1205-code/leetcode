@@ -4,8 +4,9 @@ public:
         int count = 0;
 
         for(int x : nums){
-            if(to_string(x).size() % 2 == 0)
+            if(to_string(x).size() % 2 == 0){
                 count++;
+            }
         }
         return count;
     }
