@@ -6,6 +6,7 @@ public:
         int j=nums.size()-1;
         while(i<j){
             if(nums[i]==0 && nums[j]!=0){
+                swap(nums[i], nums[j]);
                 count++;
                 i++;
                 j--;
