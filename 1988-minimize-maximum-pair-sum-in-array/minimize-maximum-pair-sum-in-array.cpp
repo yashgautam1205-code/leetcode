@@ -6,7 +6,7 @@ public:
         int minMaxPairSum = INT_MIN;
         while (left < right) {
             int currentPairSum = nums[left] + nums[right];
-            minMaxPairSum = std::max(minMaxPairSum, currentPairSum);
+            minMaxPairSum = max(minMaxPairSum, currentPairSum);
 
             left++;
             right--;
