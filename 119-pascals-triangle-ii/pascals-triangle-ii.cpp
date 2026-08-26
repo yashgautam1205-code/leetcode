@@ -1,13 +1,13 @@
 class Solution {
 public:
-    std::vector<int> getRow(int rowIndex) {
-        std::vector<int> res(1, 1);
-        long long prev = 1;
-        for(int k = 1; k <= rowIndex; k++) {
-            long long next_val = prev * (rowIndex - k + 1) / k;
-            res.push_back(next_val);
-            prev = next_val;
+    vector<int> getRow(int rowIndex) {
+        vector<vector<int>> output(rowIndex+1);
+        for(int i=0; i<=rowIndex; i++){
+            output[i].resize(i+1, 1);
+            for(int j=1; j<i; j++){
+                output[i][j] = output[i-1][j-1] + output[i-1][j];
+            }
         }
-        return res;
+        return output.back();
     }
 };
