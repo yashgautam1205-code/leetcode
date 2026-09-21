@@ -1,13 +1,22 @@
+#include <string>
+
 class Solution {
 public:
-    string reverseWords(string s) {
-        stringstream ss(s);
-        string temp,ans;
-        while(ss>>temp){
-            reverse(temp.begin(),temp.end());
-            ans+= (temp+" ");
+    std::string reverseWords(std::string s) {
+        int start = 0;
+        
+        for (int i = 0; i < s.length(); i++) {
+            if (s[i] == ' ' || i == s.length() - 1) {
+                int end = (i == s.length() - 1 && s[i] != ' ') ? i + 1 : i;
+                while (start < end) {
+                    std::swap(s[start], s[end - 1]);
+                    start++;
+                    end--;
+                }
+                start = i + 1;
+            }
         }
         
-        return ans.substr(0,ans.size()-1);
+        return s;
     }
 };
