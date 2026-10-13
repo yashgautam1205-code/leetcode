@@ -1,12 +1,23 @@
 class Solution {
 public:
     long long maxAlternatingSum(vector<int>& nums) {
-        vector<long long> sq;
-        for (int x : nums) sq.push_back(1LL * x * x);
-        int h = sq.size() / 2;
-        nth_element(sq.begin(), sq.begin() + h, sq.end());  
-        long long total = accumulate(sq.begin(), sq.end(), 0LL);
-        long long small = accumulate(sq.begin(), sq.begin() + h, 0LL);
-        return total - 2 * small; 
+        for(auto &it: nums){
+            if(it < 0){
+                it = -it;
+            }
+        }
+        sort(nums.begin(),nums.end());
+        int n = nums.size();
+        int low = 0,high = n-1;
+        long long sol = 0;
+        while(low < high){
+            sol = sol + (1ll * nums[high] * nums[high]) - (1ll * nums[low] * nums[low]);
+            low++;
+            high--;
+        }
+        if(low == high){
+            sol = sol + (1ll * nums[low] * nums[low]);
+        }
+        return sol;
     }
 };
