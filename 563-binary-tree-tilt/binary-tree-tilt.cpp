@@ -12,19 +12,19 @@
 //Comment and Upvote
 class Solution {
 public:
+    int tilt=0;
     int findTilt(TreeNode* root) {
-        int res = 0;
-        solve(root, res);
-        return res;
+        ans(root);
+        return tilt;
     }
-    int solve(TreeNode* root, int& res){
-        if(root == NULL){
+    int ans(TreeNode* root){
+        if(root==NULL)
             return 0;
-        }
-
-        int lft = solve(root->left, res);
-        int rgt = solve(root->right, res);
-        res +=  abs(lft - rgt);
-        return root->val + lft + rgt;
+        
+        int left=ans(root->left);
+        int right=ans(root->right);
+        
+        tilt+=abs(left-right);
+        return root->val+left+right; 
     }
 };
