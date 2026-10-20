@@ -15,7 +15,7 @@ public:
     TreeNode* insertIntoMaxTree(TreeNode* root, int val) {
         if(root == nullptr)
         {
-            return new TreeNode(val);;
+            return new TreeNode(val);
         }
         if(val > root->val)
         {
