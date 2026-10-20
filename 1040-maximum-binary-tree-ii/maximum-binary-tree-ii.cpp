@@ -11,11 +11,19 @@
  */
 class Solution {
 public:
+    bool found = false;
     TreeNode* insertIntoMaxTree(TreeNode* root, int val) {
-        if(!root || root->val < val){
-            return new TreeNode(val , root , nullptr);
+        if(root == nullptr)
+        {
+            return new TreeNode(val);;
         }
-        root->right = insertIntoMaxTree(root->right , val);
+        if(val > root->val)
+        {
+            TreeNode* newNode = new TreeNode(val);
+            newNode->left = root;
+            return newNode;
+        }
+        root->right = insertIntoMaxTree(root->right, val);
         return root;
     }
 };
