@@ -1,6 +1,14 @@
 class Solution {
 public:
     int minMoves(vector<int>& nums) {
-        return accumulate(nums.begin(), nums.end(), 0ll) - (nums.size() * ranges::min(nums));
+        sort(nums.begin(), nums.end());
+
+        int count = 0;
+
+        for (int i = nums.size() - 1; i > 0; i--) {
+            count += nums[i] - nums[0];
+        }
+
+        return count;
     }
 };
