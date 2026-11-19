@@ -1,9 +1,17 @@
 class Solution {
 public:
     int minimizeSum(vector<int>& nums) {
-        array<int, 3> small, large;
-        ranges::partial_sort_copy(nums, small); 
-        ranges::partial_sort_copy(nums, large, greater{}); 
-        return min({large[0] - small[2], large[1] - small[1], large[2] - small[0]});
+        if(nums.size() <= 3) return 0;
+        sort(nums.begin(), nums.end());
+
+        int n = nums.size();
+        int k = n - 2;
+        int mini = INT_MAX;
+
+        for(int i = 0 ; i + k <= n ; i++){
+            mini = min(mini, nums[i+k-1] - nums[i]);
+        }
+
+        return mini;
     }
 };
